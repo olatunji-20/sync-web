@@ -21,6 +21,8 @@
             @close="closeMoveModal" @move="onMoveBookmark" />
 
         <AddPasswordModal :visible="showAddPasswordModal" @close="closeAddPasswordModal" @save="onSavePassword" />
+
+        <AddBookmarkModal :visible="showAddBookmarkModal" @close="closeAddBookmarkModal" @import="onImportBookmark" />
     </LayoutWithSidebar>
 </template>
 
@@ -35,6 +37,7 @@ import InviteCollaboratorsModal from '../components/modals/InviteCollaboratorsMo
 import DeleteBookmarkModal from '../components/modals/DeleteBookmarkModal.vue'
 import MoveBookmarksModal from '../components/modals/MoveBookmarksModal.vue'
 import AddPasswordModal from '../components/modals/AddPasswordModal.vue'
+import AddBookmarkModal from '../components/modals/AddBookmarkModal.vue'
 
 const user = ref({ name: 'Falana Sheriff', email: 'sheriff@gmail.com' })
 const sidebarCounts = ref({ allBookmarks: 1, unsorted: 1, collection: 1 })
@@ -81,6 +84,7 @@ const moveCollections = ref([
     { id: 'collections', name: 'Collections', updated: 'Updated 2 mins ago', items: 23, icon: '📁', thumbnailClass: 'bg-purple-100' },
 ])
 const showAddPasswordModal = ref(false)
+const showAddBookmarkModal = ref(false)
 
 function onBrowserSelect(id) {
     browserFilters.value = browserFilters.value.map((f) => ({ ...f, active: f.id === id }))
@@ -199,7 +203,16 @@ function onMoveBookmark({ targetCollectionId, targetCollectionName }) {
 }
 
 function onAddBookmark() {
-    // Wire to add bookmark when ready
+    showAddBookmarkModal.value = true
+}
+
+function closeAddBookmarkModal() {
+    showAddBookmarkModal.value = false
+}
+
+function onImportBookmark({ url: bookmarkUrl }) {
+    // Wire to API when ready; optionally add to allBookmarks
+    closeAddBookmarkModal()
 }
 
 function onBookmarkItemMenu(item, index) {

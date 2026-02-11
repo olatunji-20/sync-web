@@ -34,9 +34,12 @@
           <span v-if="!profileImage" class="text-4xl">🖌️</span>
           <img v-else :src="profileImage" alt="Profile" class="w-full h-full object-cover" />
         </div>
+        <input ref="fileInputRef" type="file" accept="image/*" class="hidden" aria-hidden="true"
+          @change="onFileSelected" />
         <button type="button"
-          class="absolute cursor-pointer bottom-0 right-0 w-9 h-9 rounded-full bg-[#6B4CF5] flex items-center justify-center text-white shadow hover:bg-[#6B4CF5]/90"
-          aria-label="Upload picture">
+          class="absolute cursor-pointer border-2 bottom-0 right-0 w-9 h-9 rounded-full bg-[#6B4CF5] flex items-center justify-center text-white shadow hover:bg-[#6B4CF5]/90"
+          aria-label="Upload picture"
+          @click="triggerFileInput">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M13.9737 18.4386H5.4798C3.21044 18.4386 1.76777 17.0851 1.6381 14.8239L1.21664 8.13735C1.15181 7.12425 1.50031 6.15166 2.19733 5.41412C2.88624 4.67658 3.85883 4.25513 4.86383 4.25513C5.12319 4.25513 5.37444 4.10113 5.49601 3.85799L6.07956 2.69899C6.55775 1.75073 7.75726 1.01318 8.80279 1.01318H10.6588C11.7043 1.01318 12.8957 1.75073 13.3739 2.69089L13.9575 3.8742C14.0791 4.10113 14.3222 4.25513 14.5897 4.25513C15.5947 4.25513 16.5672 4.67658 17.2562 5.41412C17.9532 6.15977 18.3017 7.12425 18.2368 8.13735L17.8154 14.832C17.6695 17.1256 16.2674 18.4386 13.9737 18.4386ZM8.80279 2.22891C8.20303 2.22891 7.44118 2.69899 7.16561 3.24202L6.58206 4.40912C6.24166 5.06561 5.58516 5.47086 4.86383 5.47086C4.18302 5.47086 3.55084 5.74642 3.08076 6.24082C2.61878 6.73521 2.38374 7.3836 2.43237 8.05631L2.85383 14.7509C2.95108 16.3881 3.83451 17.2229 5.4798 17.2229H13.9737C15.6109 17.2229 16.4943 16.3881 16.5997 14.7509L17.0211 8.05631C17.0616 7.3836 16.8347 6.73521 16.3727 6.24082C15.9026 5.74642 15.2705 5.47086 14.5897 5.47086C13.8683 5.47086 13.2118 5.06561 12.8714 4.42533L12.2798 3.24202C12.0123 2.7071 11.2505 2.23702 10.6507 2.23702H8.80279V2.22891Z"
@@ -117,9 +120,25 @@ const props = defineProps({
   profileImage: { type: String, default: null },
 })
 
-const emit = defineEmits(['cancel', 'save'])
+const emit = defineEmits(['cancel', 'save', 'update:profileImage'])
 
 const localForm = ref({ ...props.form })
+const fileInputRef = ref(null)
+
+function triggerFileInput() {
+  fileInputRef.value?.click()
+}
+
+function onFileSelected(event) {
+  const file = event.target.files?.[0]
+  if (!file || !file.type.startsWith('image/')) return
+  const reader = new FileReader()
+  reader.onload = () => {
+    emit('update:profileImage', reader.result)
+  }
+  reader.readAsDataURL(file)
+  event.target.value = ''
+}
 
 watch(
   () => props.form,

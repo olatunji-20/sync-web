@@ -9,7 +9,7 @@
 
         <div class="flex-1 min-w-0">
           <SettingsAccountSection v-if="activeSection === 'account'" :form="form" :profile-image="profileImage"
-            @cancel="onCancel" @save="onAccountSave" />
+            @cancel="onCancel" @save="onAccountSave" @update:profile-image="profileImage = $event" />
 
           <SettingsSyncSection v-else-if="activeSection === 'sync'" v-model="selectedSyncFrequency"
             :browsers="connectedBrowsers" :frequency-options="syncFrequencyOptions"
@@ -47,7 +47,7 @@ import SettingsBookmarksSection from '../components/settings/SettingsBookmarksSe
 import SettingsNotificationsSection from '../components/settings/SettingsNotificationsSection.vue'
 import SettingsHelpSection from '../components/settings/SettingsHelpSection.vue'
 
-const user = ref({ name: 'Amao tolulope', email: 'ad@gmail.com' })
+const user = ref({ name: 'Sheriff Falana', email: 'sheriff@gmail.com' })
 const counts = ref({ allBookmarks: 1, unsorted: 1, collection: 1 })
 const profileImage = ref(null)
 const activeSection = ref('account')
@@ -61,9 +61,9 @@ const settingsNav = [
 ]
 
 const form = ref({
-  firstName: 'Amao',
-  lastName: 'tolulope',
-  email: 'ad@gmail.com',
+  firstName: 'Sheriff',
+  lastName: 'Falana',
+  email: 'sheriff@gmail.com',
   location: '',
 })
 
@@ -87,7 +87,7 @@ const customSyncSchedule = ref(null)
 const autoMergeDuplicate = ref(true)
 const notifyOnNewMember = ref(true)
 const notifyOnNewBookmark = ref(false)
-const supportEmail = ref('aj@gmail.com')
+const supportEmail = ref('sheriff@gmail.com')
 const supportPhone = ref('+234 905 905 9055')
 const supportPhoneE164 = ref('+2349059059055')
 
@@ -95,7 +95,7 @@ function onCreateFolder() { }
 function onUpgrade() { }
 
 function onCancel() {
-  form.value = { firstName: 'Amao', lastName: 'tolulope', email: 'ad@gmail.com', location: form.value.location }
+  form.value = { firstName: 'Sheriff', lastName: 'Falana', email: 'sheriff@gmail.com', location: form.value.location }
 }
 
 function onAccountSave(payload) {

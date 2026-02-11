@@ -5,12 +5,9 @@
         <h1 class="text-2xl font-semibold text-stone-900">{{ title }}</h1>
         <div class="flex items-center gap-2">
           <div class="relative" ref="notificationPanelRef">
-            <button
-              type="button"
+            <button type="button"
               class="relative p-2 border border-stone-200 bg-stone-100 rounded-full hover:bg-stone-200 cursor-pointer text-stone-600"
-              title="Notifications"
-              @click="notificationsOpen = !notificationsOpen"
-            >
+              title="Notifications" @click="notificationsOpen = !notificationsOpen">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M9.0149 15.3974C7.2674 15.3974 5.5199 15.1199 3.8624 14.5649C3.2324 14.3474 2.7524 13.9049 2.5424 13.3274C2.3249 12.7499 2.3999 12.1124 2.7449 11.5424L3.6074 10.1099C3.7874 9.80994 3.9524 9.20994 3.9524 8.85744V6.68994C3.9524 3.89994 6.2249 1.62744 9.0149 1.62744C11.8049 1.62744 14.0774 3.89994 14.0774 6.68994V8.85744C14.0774 9.20244 14.2424 9.80994 14.4224 10.1174L15.2774 11.5424C15.5999 12.0824 15.6599 12.7349 15.4424 13.3274C15.2249 13.9199 14.7524 14.3699 14.1599 14.5649C12.5099 15.1199 10.7624 15.3974 9.0149 15.3974ZM9.0149 2.75244C6.8474 2.75244 5.0774 4.51494 5.0774 6.68994V8.85744C5.0774 9.40494 4.8524 10.2149 4.5749 10.6874L3.7124 12.1199C3.5474 12.3974 3.5024 12.6899 3.5999 12.9374C3.6899 13.1924 3.9149 13.3874 4.2224 13.4924C7.3574 14.5424 10.6799 14.5424 13.8149 13.4924C14.0849 13.4024 14.2949 13.1999 14.3924 12.9299C14.4899 12.6599 14.4674 12.3674 14.3174 12.1199L13.4549 10.6874C13.1699 10.1999 12.9524 9.39744 12.9524 8.84994V6.68994C12.9524 4.51494 11.1899 2.75244 9.0149 2.75244Z"
@@ -22,54 +19,41 @@
                   d="M9.01514 17.1074C8.27264 17.1074 7.55264 16.8074 7.02764 16.2824C6.50264 15.7574 6.20264 15.0374 6.20264 14.2949H7.32764C7.32764 14.7374 7.50764 15.1724 7.82264 15.4874C8.13764 15.8024 8.57264 15.9824 9.01514 15.9824C9.94514 15.9824 10.7026 15.2249 10.7026 14.2949H11.8276C11.8276 15.8474 10.5676 17.1074 9.01514 17.1074Z"
                   fill="#24273F" />
               </svg>
-              <span v-if="hasUnreadNotifications" class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+              <span v-if="hasUnreadNotifications"
+                class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
             </button>
 
             <!-- Notifications dropdown -->
-            <div
-              v-show="notificationsOpen"
-              class="absolute top-full right-0 mt-2 w-[380px] max-h-[420px] flex flex-col bg-white rounded-xl border border-stone-200 shadow-lg z-30"
-            >
+            <div v-show="notificationsOpen"
+              class="absolute top-full right-0 mt-2 w-[380px] max-h-[420px] flex flex-col bg-white rounded-xl border border-stone-200 shadow-lg z-30">
               <div class="flex items-center justify-between px-4 py-3 border-b border-stone-200 shrink-0">
-                <h3 class="text-base font-bold text-stone-900">Notifications</h3>
-                <button
-                  type="button"
-                  class="text-sm font-medium text-[#6B4CF5] hover:underline"
-                  @click="markAllRead"
-                >
+                <h3 class="text-base font-medium text-stone-900">Notifications</h3>
+                <button type="button" class="text-sm font-medium text-[#6B4CF5] hover:underline" @click="markAllRead">
                   Mark all read
                 </button>
               </div>
               <div class="overflow-y-auto flex-1 min-h-0">
-                <div
-                  v-for="(n, idx) in notifications"
-                  :key="n.id"
-                  class="px-4 py-3 border-b border-stone-100 last:border-b-0"
-                >
+                <div v-for="(n, idx) in notifications" :key="n.id"
+                  class="px-4 py-3 border-b border-stone-100 last:border-b-0">
                   <div class="flex gap-3">
                     <div
                       class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center text-white text-sm font-semibold"
-                      :class="n.avatarBg"
-                    >
+                      :class="n.avatarBg">
                       {{ n.avatarInitial }}
                     </div>
                     <div class="min-w-0 flex-1">
                       <p class="font-semibold text-stone-900">{{ n.title }}</p>
                       <p class="text-sm text-stone-500 mt-0.5">{{ n.description }}</p>
                       <p class="text-xs text-stone-400 mt-1">{{ n.timeAgo }}</p>
-                      <div v-if="n.actions" class="flex gap-2 mt-3">
-                        <button
-                          type="button"
-                          class="px-3 py-1.5 rounded-lg text-sm font-medium bg-stone-100 text-stone-700 hover:bg-stone-200"
-                          @click="onNotificationAction(n.id, 'decline')"
-                        >
+                      <div v-if="n.actions" class="flex gap-2 mt-3 justify-between">
+                        <button type="button"
+                          class="w-1/2 px-3 py-1.5 rounded-full text-sm cursor-pointer bg-stone-100 text-stone-700 hover:bg-stone-200"
+                          @click="onNotificationAction(n.id, 'decline')">
                           Decline
                         </button>
-                        <button
-                          type="button"
-                          class="px-3 py-1.5 rounded-lg text-sm font-medium bg-[#6B4CF5] text-white hover:bg-[#6B4CF5]/90"
-                          @click="onNotificationAction(n.id, 'accept')"
-                        >
+                        <button type="button"
+                          class="w-1/2 px-3 py-1.5 rounded-full text-sm cursor-pointer bg-[#24273F] text-white hover:bg-[#24273F]/90"
+                          @click="onNotificationAction(n.id, 'accept')">
                           Accept
                         </button>
                       </div>
@@ -79,8 +63,7 @@
               </div>
             </div>
           </div>
-          <router-link
-            to="/settings"
+          <router-link to="/settings"
             class="p-2 border border-stone-200 bg-stone-100 rounded-full hover:bg-stone-200 cursor-pointer text-stone-600 inline-flex"
             title="Settings">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
