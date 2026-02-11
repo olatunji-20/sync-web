@@ -1,13 +1,9 @@
 <template>
   <nav class="w-52 shrink-0 space-y-0.5">
-    <button
-      v-for="item in items"
-      :key="item.id"
-      type="button"
-      class="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors"
-      :class="modelValue === item.id ? 'bg-stone-100 text-stone-900' : 'text-stone-600 hover:bg-stone-50'"
-      @click="$emit('update:modelValue', item.id)"
-    >
+    <button v-for="item in items" :key="item.id" type="button"
+      class="w-full text-left px-4 py-2.5 rounded-full cursor-pointer text-sm transition-colors"
+      :class="modelValue === item.id ? 'bg-stone-100 text-stone-900 font-[500]' : 'text-stone-600 hover:bg-stone-50 font-[400]'"
+      @click="$emit('update:modelValue', item.id)">
       {{ item.label }}
     </button>
   </nav>

@@ -1,54 +1,32 @@
 <template>
   <LayoutWithSidebar :user="user" :counts="counts" @create-folder="onCreateFolder" @upgrade="onUpgrade">
-    <div class="px-6 py-8">
-      <h1 class="text-2xl font-bold text-stone-900">Settings</h1>
+    <div class="py-8">
+      <h1 class="text-2xl font-bold text-stone-900 px-6">Settings</h1>
+      <hr class="my-6 text-stone-200" />
 
-      <div class="flex gap-8 mt-8">
+      <div class="flex gap-8 mt-8 px-6">
         <SettingsNav v-model="activeSection" :items="settingsNav" />
 
         <div class="flex-1 min-w-0">
-          <SettingsAccountSection
-            v-if="activeSection === 'account'"
-            :form="form"
-            :profile-image="profileImage"
-            @cancel="onCancel"
-            @save="onAccountSave"
-          />
+          <SettingsAccountSection v-if="activeSection === 'account'" :form="form" :profile-image="profileImage"
+            @cancel="onCancel" @save="onAccountSave" />
 
-          <SettingsSyncSection
-            v-else-if="activeSection === 'sync'"
-            v-model="selectedSyncFrequency"
-            :browsers="connectedBrowsers"
-            :frequency-options="syncFrequencyOptions"
-            @cancel="onSyncCancel"
-            @save="onSyncSave"
-            @disconnect="disconnectBrowser"
-          />
+          <SettingsSyncSection v-else-if="activeSection === 'sync'" v-model="selectedSyncFrequency"
+            :browsers="connectedBrowsers" :frequency-options="syncFrequencyOptions"
+            :custom-schedule="customSyncSchedule" @cancel="onSyncCancel" @save="onSyncSave"
+            @disconnect="disconnectBrowser" @custom-schedule-save="onCustomScheduleSave" />
 
-          <SettingsBookmarksSection
-            v-else-if="activeSection === 'bookmarks'"
-            v-model="autoMergeDuplicate"
-            @cancel="onBookmarkMgmtCancel"
-            @save="onBookmarkMgmtSave"
-          />
+          <SettingsBookmarksSection v-else-if="activeSection === 'bookmarks'" v-model="autoMergeDuplicate"
+            @cancel="onBookmarkMgmtCancel" @save="onBookmarkMgmtSave" />
 
-          <SettingsNotificationsSection
-            v-else-if="activeSection === 'notifications'"
-            :notify-on-new-member="notifyOnNewMember"
-            :notify-on-new-bookmark="notifyOnNewBookmark"
-            @cancel="onNotificationsCancel"
-            @save="onNotificationsSave"
+          <SettingsNotificationsSection v-else-if="activeSection === 'notifications'"
+            :notify-on-new-member="notifyOnNewMember" :notify-on-new-bookmark="notifyOnNewBookmark"
+            @cancel="onNotificationsCancel" @save="onNotificationsSave"
             @update:notify-on-new-member="notifyOnNewMember = $event"
-            @update:notify-on-new-bookmark="notifyOnNewBookmark = $event"
-          />
+            @update:notify-on-new-bookmark="notifyOnNewBookmark = $event" />
 
-          <SettingsHelpSection
-            v-else-if="activeSection === 'help'"
-            :email="supportEmail"
-            :phone="supportPhone"
-            :phone-e164="supportPhoneE164"
-            @copy-email="copyEmail"
-          />
+          <SettingsHelpSection v-else-if="activeSection === 'help'" :email="supportEmail" :phone="supportPhone"
+            :phone-e164="supportPhoneE164" @copy-email="copyEmail" />
 
           <div v-else class="py-12 text-center text-stone-500">
             <p class="text-sm">This section is coming soon.</p>
@@ -105,6 +83,7 @@ const syncFrequencyOptions = [
   { id: 'custom', label: 'Custom' },
 ]
 const selectedSyncFrequency = ref('immediately')
+const customSyncSchedule = ref(null)
 const autoMergeDuplicate = ref(true)
 const notifyOnNewMember = ref(true)
 const notifyOnNewBookmark = ref(false)
@@ -112,8 +91,8 @@ const supportEmail = ref('aj@gmail.com')
 const supportPhone = ref('+234 905 905 9055')
 const supportPhoneE164 = ref('+2349059059055')
 
-function onCreateFolder() {}
-function onUpgrade() {}
+function onCreateFolder() { }
+function onUpgrade() { }
 
 function onCancel() {
   form.value = { firstName: 'Amao', lastName: 'tolulope', email: 'ad@gmail.com', location: form.value.location }
@@ -127,6 +106,11 @@ function onAccountSave(payload) {
 
 function onSyncCancel() {
   selectedSyncFrequency.value = 'immediately'
+  customSyncSchedule.value = null
+}
+
+function onCustomScheduleSave(payload) {
+  customSyncSchedule.value = payload
 }
 
 function onSyncSave() {
