@@ -1,5 +1,5 @@
 <template>
-  <LayoutWithSidebar
+  <AppLayout
     :user="user"
     :counts="counts"
     @create-folder="onCreateFolder"
@@ -65,18 +65,18 @@
         </div>
       </div>
     </div>
-  </LayoutWithSidebar>
+  </AppLayout>
 </template>
 
 <script setup>
+import AppLayout from "@/layouts/app-layout/AppLayout.vue";
 import { ref } from "vue";
-import LayoutWithSidebar from "../components/LayoutWithSidebar.vue";
-import SettingsAccountSection from "../components/settings/SettingsAccountSection.vue";
-import SettingsBookmarksSection from "../components/settings/SettingsBookmarksSection.vue";
-import SettingsHelpSection from "../components/settings/SettingsHelpSection.vue";
-import SettingsNav from "../components/settings/SettingsNav.vue";
-import SettingsNotificationsSection from "../components/settings/SettingsNotificationsSection.vue";
-import SettingsSyncSection from "../components/settings/SettingsSyncSection.vue";
+import SettingsAccountSection from "./sections/SettingsAccountSection.vue";
+import SettingsBookmarksSection from "./sections/SettingsBookmarksSection.vue";
+import SettingsHelpSection from "./sections/SettingsHelpSection.vue";
+import SettingsNav from "./sections/SettingsNav.vue";
+import SettingsNotificationsSection from "./sections/SettingsNotificationsSection.vue";
+import SettingsSyncSection from "./sections/SettingsSyncSection.vue";
 
 const user = ref({ name: "Sheriff Falana", email: "sheriff@gmail.com" });
 const counts = ref({ allBookmarks: 1, unsorted: 1, collection: 1 });

@@ -160,13 +160,13 @@
 </template>
 
 <script setup>
+import NotificationIcon from "@/components/icons/NotificationIcon.vue";
+import SearchIcon from "@/components/icons/SearchIcon.vue";
+import SettingsIcon from "@/components/icons/SettingsIcon.vue";
+import ShareIcon from "@/components/icons/ShareIcon.vue";
+import Select from "@/components/shared/Select.vue";
 import { computed, onMounted, onUnmounted, ref } from "vue";
-import BrowserFilters from "./BrowserFilters.vue";
-import NotificationIcon from "./icons/NotificationIcon.vue";
-import SearchIcon from "./icons/SearchIcon.vue";
-import SettingsIcon from "./icons/SettingsIcon.vue";
-import ShareIcon from "./icons/ShareIcon.vue";
-import Select from "./shared/Select.vue";
+import BrowserFilters from "../components/BrowserFilters.vue";
 
 const searchQuery = ref("");
 const notificationsOpen = ref(false);

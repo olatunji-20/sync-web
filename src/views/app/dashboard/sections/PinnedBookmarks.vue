@@ -52,9 +52,9 @@
 </template>
 
 <script setup>
+import BookmarkContextMenu from "@/components/BookmarkContextMenu.vue";
+import HorizontalEllipses from "@/components/icons/HorizontalEllipses.vue";
 import { onMounted, onUnmounted, ref } from "vue";
-import BookmarkContextMenu from "./BookmarkContextMenu.vue";
-import HorizontalEllipses from "./icons/HorizontalEllipses.vue";
 
 defineProps({
   bookmarks: {

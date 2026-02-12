@@ -5,7 +5,7 @@
     @create-folder="onCreateFolder"
     @upgrade="onUpgrade"
   >
-    <DashboardHeader
+    <AppHeader
       v-model:sort="sortOption"
       v-model:view="viewMode"
       :title="headerTitle"
@@ -75,15 +75,15 @@
 <script setup>
 import AppLayout from "@/layouts/app-layout/AppLayout.vue";
 import { ref } from "vue";
-import AllBookmarksList from "../components/AllBookmarksList.vue";
-import DashboardHeader from "../components/DashboardHeader.vue";
-import AddBookmarkModal from "../components/modals/AddBookmarkModal.vue";
-import AddPasswordModal from "../components/modals/AddPasswordModal.vue";
-import DeleteBookmarkModal from "../components/modals/DeleteBookmarkModal.vue";
-import EditBookmarkModal from "../components/modals/EditBookmarkModal.vue";
-import InviteCollaboratorsModal from "../components/modals/InviteCollaboratorsModal.vue";
-import MoveBookmarksModal from "../components/modals/MoveBookmarksModal.vue";
-import PinnedBookmarks from "../components/PinnedBookmarks.vue";
+import AddBookmarkModal from "../shared/modals/AddBookmarkModal.vue";
+import AddPasswordModal from "../shared/modals/AddPasswordModal.vue";
+import DeleteBookmarkModal from "../shared/modals/DeleteBookmarkModal.vue";
+import EditBookmarkModal from "../shared/modals/EditBookmarkModal.vue";
+import InviteCollaboratorsModal from "../shared/modals/InviteCollaboratorsModal.vue";
+import MoveBookmarksModal from "../shared/modals/MoveBookmarksModal.vue";
+import AppHeader from "../shared/sections/AppHeader.vue";
+import AllBookmarksList from "./sections/AllBookmarksList.vue";
+import PinnedBookmarks from "./sections/PinnedBookmarks.vue";
 
 const user = ref({ name: "Falana Sheriff", email: "sheriff@gmail.com" });
 const sidebarCounts = ref({ allBookmarks: 1, unsorted: 1, collection: 1 });

@@ -98,11 +98,11 @@
 </template>
 
 <script setup>
-import EyeIcon from "./icons/EyeIcon.vue";
-import Penicon from "./icons/Penicon.vue";
-import PinIcon from "./icons/PinIcon.vue";
-import PlusIcon from "./icons/PlusIcon.vue";
-import TrashIcon from "./icons/TrashIcon.vue";
+import EyeIcon from "@/components/icons/EyeIcon.vue";
+import Penicon from "@/components/icons/Penicon.vue";
+import PinIcon from "@/components/icons/PinIcon.vue";
+import PlusIcon from "@/components/icons/PlusIcon.vue";
+import TrashIcon from "@/components/icons/TrashIcon.vue";
 
 defineProps({
   bookmarks: {
