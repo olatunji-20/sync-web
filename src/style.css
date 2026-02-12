@@ -1,8 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 @import "tailwindcss";
 
-@theme {
-  --color-purple-dark: #4B0082;
-  --color-purple-medium: #6B46C1;
-  --color-purple-light: #9333EA;
+@plugin "tailwind-scrollbar";
+
+@theme inline {
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  --color-purple-dark: #4b0082;
+  --color-purple-medium: #6b46c1;
+  --color-purple-light: #9333ea;
+
+  --color-black-100: #24273f;
+  --color-black-90: #3a3d52;
+  --color-black-80: #505265;
+  --color-black-70: #666879;
+  --color-black-50: #91939f;
+
+  --color-primary-100: #6b4cf5;
+  --color-primary-90: #795df6;
+  --color-primary-10: #f0edfe;
+
+  --color-tertiary-background: #f4f4f6;
 }
 
+body {
+  @apply font-dm-sans;
+}
