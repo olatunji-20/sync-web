@@ -1,9 +1,9 @@
 <template>
-    <header class="border border-red-500 py-5 bg-white rounded-full w-[83%] mx-auto">
-        <div class="max-w-7xl mx-auto px-8 flex justify-between items-center text-black">
+    <header class="py-3 sm:py-4 md:py-5 bg-white rounded-full w-[95%] sm:w-[90%] md:w-[83%] mx-auto px-2 sm:px-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex justify-between items-center text-black">
             <router-link to="/">
                 <div class="">
-                    <svg width="104" height="32" viewBox="0 0 104 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-20 sm:w-24 md:w-[104px] h-6 sm:h-7 md:h-8" viewBox="0 0 104 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_720_4218)">
                             <g clip-path="url(#clip1_720_4218)">
                                 <path
@@ -34,7 +34,7 @@
                 <router-link to="/#" class="font-medium">Blog</router-link>
             </nav>
             <button
-                class="bg-gradient-to-br from-purple-medium to-purple-light text-white border-none px-6 py-2.5 rounded-full font-semibold cursor-pointer">
+                class="bg-gradient-to-br from-purple-medium to-purple-light text-white border-none px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 rounded-full font-semibold cursor-pointer text-sm sm:text-base shrink-0">
                 Get Started
             </button>
         </div>

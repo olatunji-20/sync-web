@@ -12,14 +12,13 @@
                 </button>
             </div>
             <div class="flex justify-center items-center border-2 h-full border-yellow-400">
-                <div class="relative w-[300px] h-[300px] mx-auto">
-                    <div
-                        class="absolute top-0 left-0 w-[200px] h-[150px] bg-white/90 rounded-xl shadow-lg -rotate-[5deg]">
+                <div class="relative w-full h-full bg-[url('@/assets/dew.svg')] bg-contain bg-center bg-no-repeat">
+                    <div class="absolute top-28 left-8 w-[350px] h-[286px] rounded-2xl rotate-[10deg]">
+                        <img src="@/assets/cont-2.svg" alt="Control" class="w-full h-full rotate-[-10deg] object-cover">
                     </div>
-                    <div
-                        class="absolute top-5 left-[50px] w-[200px] h-[150px] bg-white/90 rounded-xl shadow-lg rotate-[3deg]">
+                    <div class="absolute top-5 right-0 w-[315px] h-[280px] bg-[#FFF] rounded-2xl -rotate-[10deg]">
+                        <img src="@/assets/insta.svg" alt="Control" class="w-full h-full object-cover">
                     </div>
-
                 </div>
             </div>
         </div>

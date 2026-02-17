@@ -1,7 +1,7 @@
 <template>
-    <div class="font-sans text-gray-800 min-h-screen">
+    <div class="font-sans text-gray-800 min-h-screen overflow-x-hidden">
         <!-- Header Navigation -->
-        <div class="border border-red-400 pt-16 px-8 bg-[#130E26]">
+        <div class="pt-12 sm:pt-14 md:pt-16 px-4 sm:px-6 md:px-8 bg-[#130E26]">
             <Navbar />
         </div>
 

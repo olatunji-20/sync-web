@@ -1,12 +1,12 @@
 <template>
-    <div class="border-4 border-green-700">
+    <div>
         <!-- Pricing Section -->
-        <section class="py-32 bg-[#130E26] px-8 border-2 border-green-400">
+        <section class="py-12 sm:py-20 md:py-28 lg:py-32 bg-[#130E26] px-4 sm:px-6 md:px-8">
             <div class="max-w-7xl text-center mx-auto">
-                <h2 class="text-4xl font-medium mb-4 text-white">Unlock the Full Power of Your Bookmarks</h2>
-                <p class="text-lg text-white/90 w-[65%] mx-auto mb-8 leading-relaxed">Go beyond saving. Premium gives
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4 text-white">Unlock the Full Power of Your Bookmarks</h2>
+                <p class="text-base sm:text-lg text-white/90 w-full max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2">Go beyond saving. Premium gives
                     you advanced tools to organize, collaborate, and preserve everything you care about online.</p>
-                <div class="flex items-center justify-center gap-4 my-12 text-white border">
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 my-8 sm:my-12 text-white">
                     <span class="text-sm">Monthly</span>
                     <label class="relative inline-block w-[60px] h-[30px] cursor-pointer" for="pricing-toggle">
                         <input type="checkbox" id="pricing-toggle" v-model="isAnnually" class="toggle-checkbox" />
@@ -16,16 +16,16 @@
                     <span class="text-sm">Annually</span>
                     <p>Save upto 20%</p>
                 </div>
-                <div class="overflow-hidden mt-12">
-                    <div class="flex transition-transform duration-300 ease-in-out"
+                <div class="overflow-hidden mt-8 sm:mt-12">
+                    <div class="flex transition-transform duration-300 ease-in-out min-w-0"
                         :style="{ width: '200%', transform: isAnnually ? 'translateX(-50%)' : 'translateX(0)' }">
-                        <div class="monthly-container grid grid-cols-1 md:grid-cols-3 gap-8 w-full flex-[0_0_50%]">
-                            <div class="rounded-xl p-8 text-left border-2 border-[#3A3D52]">
+                        <div class="monthly-container grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8 w-full flex-[0_0_50%] min-w-0">
+                            <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
                                 <p class="text-2xl text-white font-semibold mb-2">Free</p>
                                 <div class="text-gray-300 text-sm mb-6">For small group</div>
-                                <div class="text-5xl font-semibold text-white">$0</div>
+                                <div class="text-4xl sm:text-5xl font-semibold text-white">$0</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-10 px-8 py-3 rounded-full font-semibold text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
                                     Get Started
                                 </button>
                                 <ul class="list-none text-left mb-8 text-gray-300">
@@ -55,12 +55,12 @@
                                         </span>Folder Download</li>
                                 </ul>
                             </div>
-                            <div class="rounded-xl p-8 text-left border-2 border-[#3A3D52]">
+                            <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
                                 <p class="text-2xl text-white font-semibold mb-2">Basic</p>
                                 <div class="text-gray-300 text-sm mb-6">For small group</div>
-                                <div class="text-5xl font-semibold text-white">$2</div>
+                                <div class="text-4xl sm:text-5xl font-semibold text-white">$2</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-10 px-8 py-3 rounded-full font-semibold text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
                                     Get Started
                                 </button>
                                 <ul class="list-none text-left mb-8 text-gray-300">
@@ -114,12 +114,12 @@
                                         </span>Priority Syncing</li>
                                 </ul>
                             </div>
-                            <div class="rounded-xl p-8 text-left border-2 border-[#3A3D52]">
+                            <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
                                 <p class="text-2xl text-white font-semibold mb-2">Standard</p>
                                 <div class="text-gray-300 text-sm mb-6">For midsize group</div>
-                                <div class="text-5xl font-semibold text-white">$5</div>
+                                <div class="text-4xl sm:text-5xl font-semibold text-white">$5</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-10 px-8 py-3 rounded-full font-semibold text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
                                     Get Started
                                 </button>
                                 <ul class="list-none text-left mb-8 text-gray-300">
@@ -174,13 +174,13 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="yearly-container grid grid-cols-1 md:grid-cols-3 gap-8 w-full flex-[0_0_50%]">
-                            <div class="rounded-xl p-8 text-left border-2 border-[#3A3D52]">
+                        <div class="yearly-container grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8 w-full flex-[0_0_50%] min-w-0">
+                            <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
                                 <p class="text-2xl text-white font-semibold mb-2">Free</p>
                                 <div class="text-gray-300 text-sm mb-6">For small group</div>
-                                <div class="text-5xl font-semibold text-white">$0</div>
+                                <div class="text-4xl sm:text-5xl font-semibold text-white">$0</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-10 px-8 py-3 rounded-full font-semibold text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
                                     Get Started
                                 </button>
                                 <ul class="list-none text-left mb-8 text-gray-300">
@@ -210,12 +210,12 @@
                                         </span>Folder Download</li>
                                 </ul>
                             </div>
-                            <div class="rounded-xl p-8 text-left border-2 border-[#3A3D52]">
+                            <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
                                 <p class="text-2xl text-white font-semibold mb-2">Basic</p>
                                 <div class="text-gray-300 text-sm mb-6">For small group</div>
-                                <div class="text-5xl font-semibold text-white">$20</div>
+                                <div class="text-4xl sm:text-5xl font-semibold text-white">$20</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-10 px-8 py-3 rounded-full font-semibold text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
                                     Get Started
                                 </button>
                                 <ul class="list-none text-left mb-8 text-gray-300">
@@ -269,12 +269,12 @@
                                         </span>Priority Syncing</li>
                                 </ul>
                             </div>
-                            <div class="rounded-xl p-8 text-left border-2 border-[#3A3D52]">
+                            <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
                                 <p class="text-2xl text-white font-semibold mb-2">Standard</p>
                                 <div class="text-gray-300 text-sm mb-6">For midsize group</div>
-                                <div class="text-5xl font-semibold text-white">$48</div>
+                                <div class="text-4xl sm:text-5xl font-semibold text-white">$48</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-10 px-8 py-3 rounded-full font-semibold text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
                                     Get Started
                                 </button>
                                 <ul class="list-none text-left mb-8 text-gray-300">
@@ -332,15 +332,15 @@
                     </div>
                 </div>
                 <div
-                    class="border-2 border-[#3A3D52] rounded-xl p-8 mt-12 text-center text-white flex justify-between items-center">
-                    <div class="text-left w-[40%]">
-                        <p class="mb-2 text-2xl font-semibold">Not seeing the plan that works best for you?</p>
-                        <p class="text-base font-light leading-7">No worries—we've got you. Whether you're a growing
+                    class="border-2 border-[#3A3D52] rounded-xl p-5 sm:p-6 md:p-8 mt-8 sm:mt-12 text-center text-white flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="text-left w-full md:w-[40%]">
+                        <p class="mb-2 text-xl sm:text-2xl font-semibold">Not seeing the plan that works best for you?</p>
+                        <p class="text-sm sm:text-base font-light leading-7">No worries—we've got you. Whether you're a growing
                             team or
                             have unique
                             requirements, we're happy to chat and tailor something just for you.</p>
                     </div>
-                    <button class="bg-[#6B4CF5] text-white px-8 py-3 rounded-full text-base cursor-pointer">
+                    <button class="bg-[#6B4CF5] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base cursor-pointer shrink-0">
                         Contact Us
                     </button>
                 </div>

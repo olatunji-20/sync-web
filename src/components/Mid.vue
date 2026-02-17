@@ -19,8 +19,9 @@
                         resources are always at your fingertips whenever you need them</p>
                 </div>
                 <div
-                    class="flex justify-center items-center h-full bg-[#F8F6FF] border-2 border-purple-400 relative rounded-lg">
-                    <div class="border border-red-400 w-[80%] h-[75%] absolute bottom-0 right-0 rounded-lg"></div>
+                    class="flex justify-center items-center h-full bg-[#F8F6FF] border-2 border-purple-400 relative rounded-xl">
+                    <img src="@/assets/sharing.svg" alt="sharing Image" class="w-full h-full object-contain">
+                    <!-- <div class="border border-red-400 w-[80%] h-[75%] absolute bottom-0 right-0 rounded-lg"></div> -->
                 </div>
             </div>
         </section>
@@ -28,10 +29,9 @@
         <!-- Sync Bookmarks from Multiple Browsers -->
         <section class="bg-white py-32 px-8 border-2 border-green-400">
             <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="flex justify-center items-center pr-8 h-full bg-[#F8F6FF] border-2 border-red-400">
-                    <div class="relative w-[400px] mx-auto">
-
-                    </div>
+                <div
+                    class="flex justify-center items-center pr-8 h-full bg-[#F8F6FF] rounded-xl border-2 border-red-400">
+                    <img src="@/assets/folders.svg" alt="folders Image" class="w-full h-full object-contain">
                 </div>
                 <div class="h-full border-2 border-red-400">
                     <div class="text-[#6B4CF5] font-semibold mb-6 uppercase text-sm">FOLDERS</div>
@@ -64,8 +64,9 @@
                         and easy access to important links.</p>
                 </div>
                 <div
-                    class="flex justify-center items-center relative h-full bg-[#F8F6FF] rounded-lg border-2 border-purple-400">
-                    <div class="border border-red-400 w-[80%] h-[75%] absolute top-0 right-0 rounded-lg"></div>
+                    class="flex justify-center items-center relative h-full bg-[#F8F6FF] rounded-xl border-2 border-purple-400">
+                    <!-- <div class="border border-red-400 w-[80%] h-[75%] absolute top-0 right-0 rounded-lg"></div> -->
+                    <img src="@/assets/bookmarking.svg" alt="bookmarking Image" class="w-full h-full object-contain">
                 </div>
             </div>
         </section>
@@ -80,16 +81,19 @@
 
                 <div class="my-16 mx-auto flex justify-center items-end pt-12 gap-0">
                     <div
-                        class="border rounded-2xl p-4 flex items-center justify-center border-[#65558F12] bg-white w-[450px] h-[350px] shrink-0 z-10">
-                        <div class="w-full h-[120px] border"></div>
+                        class="border rounded-[50px] flex items-center justify-center border-[#65558F12] bg-white w-[450px] h-[350px] shrink-0 z-10">
+                        <!-- <div class="w-full h-[120px] border"></div> -->
+                        <img src="@/assets/how-11.svg" alt="install Image" class="w-full h-full object-cover">
                     </div>
                     <div
-                        class="border rounded-2xl p-4 flex items-center justify-center border-[#65558F12] bg-white w-[450px] h-[350px] shrink-0 relative bottom-16 -mx-10">
-                        <div class="w-[85%] h-[200px] border"></div>
+                        class="border rounded-[50px] flex items-center justify-center border-[#65558F12] bg-white w-[450px] h-[350px] shrink-0 relative bottom-16 -mx-10">
+                        <!-- <div class="w-[85%] h-[200px] border"></div> -->
+                        <img src="@/assets/how-2.svg" alt="install Image" class="w-full h-full object-contain">
                     </div>
                     <div
-                        class="border rounded-2xl p-4 flex items-center justify-center border-[#65558F12] bg-white w-[450px] h-[350px] shrink-0  z-10">
-                        <div class="w-full h-full border"></div>
+                        class="border rounded-[50px] flex items-center justify-center border-[#65558F12] bg-white w-[450px] h-[350px] shrink-0  z-10">
+                        <!-- <div class="w-full h-full border"></div> -->
+                        <img src="@/assets/how-3.svg" alt="install Image" class="w-full h-full object-contain">
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-12 text-left">
