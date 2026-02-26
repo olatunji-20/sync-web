@@ -1,34 +1,45 @@
 <template>
     <div>
         <!-- Pricing Section -->
-        <section class="py-12 sm:py-20 md:py-28 lg:py-32 bg-[#130E26] px-4 sm:px-6 md:px-8">
+        <section class="py-12 sm:py-20 md:py-28 lg:py-32 px-4 sm:px-6 md:px-8"
+            :class="transparentBg ? 'bg-transparent' : 'bg-[#130E26]'">
             <div class="max-w-7xl text-center mx-auto">
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4 text-white">Unlock the Full Power of Your Bookmarks</h2>
-                <p class="text-base sm:text-lg text-white/90 w-full max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2">Go beyond saving. Premium gives
+                <h2 class="text-2xl sm:text-3xl md:text-[36px] font-semibold mb-3 sm:mb-4 text-[#E6E6E6]">Unlock the
+                    Full
+                    Power
+                    of Your Bookmarks</h2>
+                <p
+                    class="text-base sm:text-lg text-[#B3B3B3] w-full md:w-[60%] mx-auto mb-6 sm:mb-8 leading-relaxed px-2">
+                    Go beyond saving. Premium gives
                     you advanced tools to organize, collaborate, and preserve everything you care about online.</p>
                 <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 my-8 sm:my-12 text-white">
-                    <span class="text-sm">Monthly</span>
+                    <span class="text-sm text-[#CCCCCC]">Monthly</span>
                     <label class="relative inline-block w-[60px] h-[30px] cursor-pointer" for="pricing-toggle">
                         <input type="checkbox" id="pricing-toggle" v-model="isAnnually" class="toggle-checkbox" />
                         <span class="toggle-track"></span>
                         <span class="toggle-knob"></span>
                     </label>
-                    <span class="text-sm">Annually</span>
+                    <span class="text-sm text-[#CCCCCC]">Annually</span>
                     <p>Save upto 20%</p>
                 </div>
                 <div class="overflow-hidden mt-8 sm:mt-12">
                     <div class="flex transition-transform duration-300 ease-in-out min-w-0"
                         :style="{ width: '200%', transform: isAnnually ? 'translateX(-50%)' : 'translateX(0)' }">
-                        <div class="monthly-container grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8 w-full flex-[0_0_50%] min-w-0">
+                        <div
+                            class="monthly-container grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8 w-full flex-[0_0_50%] min-w-0">
                             <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
-                                <p class="text-2xl text-white font-semibold mb-2">Free</p>
-                                <div class="text-gray-300 text-sm mb-6">For small group</div>
+                                <p
+                                    class="text-2xl font-semibold mb-2 w-fit bg-linear-to-r from-[#EC4CF5] to-[#96DAFF] bg-clip-text text-transparent">
+                                    Free</p>
+                                <div class="text-[#E6E6E6] text-sm mb-6">For small group</div>
                                 <div class="text-4xl sm:text-5xl font-semibold text-white">$0</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    type="button"
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full"
+                                    @click="openGetStartedModal">
                                     Get Started
                                 </button>
-                                <ul class="list-none text-left mb-8 text-gray-300">
+                                <ul class="list-none text-left mb-8 text-[#E6E6E6]">
                                     <li class="py-2 flex items-center gap-2"> <span><svg width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="10" cy="10" r="10" fill="#6B4CF5" />
@@ -56,14 +67,18 @@
                                 </ul>
                             </div>
                             <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
-                                <p class="text-2xl text-white font-semibold mb-2">Basic</p>
-                                <div class="text-gray-300 text-sm mb-6">For small group</div>
+                                <p
+                                    class="text-2xl font-semibold mb-2 w-fit bg-linear-to-r from-[#90D537] to-[#DE929E] bg-clip-text text-transparent">
+                                    Basic</p>
+                                <div class="text-[#E6E6E6] text-sm mb-6">For small group</div>
                                 <div class="text-4xl sm:text-5xl font-semibold text-white">$2</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    type="button"
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full"
+                                    @click="openGetStartedModal">
                                     Get Started
                                 </button>
-                                <ul class="list-none text-left mb-8 text-gray-300">
+                                <ul class="list-none text-left mb-8 text-[#E6E6E6]">
                                     <li class="py-2 flex items-center gap-2"> <span><svg width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="10" cy="10" r="10" fill="#6B4CF5" />
@@ -115,14 +130,19 @@
                                 </ul>
                             </div>
                             <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
-                                <p class="text-2xl text-white font-semibold mb-2">Standard</p>
-                                <div class="text-gray-300 text-sm mb-6">For midsize group</div>
+                                <p
+                                    class="text-2xl font-semibold mb-2 w-fit bg-linear-to-r from-[#C2D537] to-[#2DBEC9] bg-clip-text text-transparent">
+                                    Standard</p>
+                                <div class="text-sm mb-6 text-[#E6E6E6]">
+                                    For midsize group </div>
                                 <div class="text-4xl sm:text-5xl font-semibold text-white">$5</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    type="button"
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full"
+                                    @click="openGetStartedModal">
                                     Get Started
                                 </button>
-                                <ul class="list-none text-left mb-8 text-gray-300">
+                                <ul class="list-none text-left mb-8 text-[#E6E6E6]">
                                     <li class="py-2 flex items-center gap-2"> <span><svg width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="10" cy="10" r="10" fill="#6B4CF5" />
@@ -174,16 +194,21 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="yearly-container grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8 w-full flex-[0_0_50%] min-w-0">
+                        <div
+                            class="yearly-container grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8 w-full flex-[0_0_50%] min-w-0">
                             <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
-                                <p class="text-2xl text-white font-semibold mb-2">Free</p>
-                                <div class="text-gray-300 text-sm mb-6">For small group</div>
+                                <p
+                                    class="text-2xl font-semibold mb-2 bg-linear-to-r from-[#EC4CF5] to-[#96DAFF] bg-clip-text text-transparent">
+                                    Free</p>
+                                <div class="text-[#E6E6E6] text-sm mb-6">For small group</div>
                                 <div class="text-4xl sm:text-5xl font-semibold text-white">$0</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    type="button"
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full"
+                                    @click="openGetStartedModal">
                                     Get Started
                                 </button>
-                                <ul class="list-none text-left mb-8 text-gray-300">
+                                <ul class="list-none text-left mb-8 text-[#E6E6E6]">
                                     <li class="py-2 flex items-center gap-2"> <span><svg width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="10" cy="10" r="10" fill="#6B4CF5" />
@@ -211,14 +236,18 @@
                                 </ul>
                             </div>
                             <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
-                                <p class="text-2xl text-white font-semibold mb-2">Basic</p>
-                                <div class="text-gray-300 text-sm mb-6">For small group</div>
+                                <p
+                                    class="text-2xl font-semibold mb-2 w-fit bg-linear-to-r from-[#90D537] to-[#DE929E] bg-clip-text text-transparent">
+                                    Basic</p>
+                                <div class="text-[#E6E6E6] text-sm mb-6">For small group</div>
                                 <div class="text-4xl sm:text-5xl font-semibold text-white">$20</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    type="button"
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full"
+                                    @click="openGetStartedModal">
                                     Get Started
                                 </button>
-                                <ul class="list-none text-left mb-8 text-gray-300">
+                                <ul class="list-none text-left mb-8 text-[#E6E6E6]">
                                     <li class="py-2 flex items-center gap-2"> <span><svg width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="10" cy="10" r="10" fill="#6B4CF5" />
@@ -270,14 +299,18 @@
                                 </ul>
                             </div>
                             <div class="rounded-xl p-5 sm:p-6 md:p-8 text-left border-2 border-[#3A3D52]">
-                                <p class="text-2xl text-white font-semibold mb-2">Standard</p>
-                                <div class="text-gray-300 text-sm mb-6">For midsize group</div>
+                                <p
+                                    class="text-2xl font-semibold mb-2 w-fit bg-linear-to-r from-[#C2D537] to-[#2DBEC9] bg-clip-text text-transparent">
+                                    Standard</p>
+                                <div class="text-[#E6E6E6] text-sm mb-6">For midsize group</div>
                                 <div class="text-4xl sm:text-5xl font-semibold text-white">$48</div>
                                 <button
-                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full">
+                                    type="button"
+                                    class="bg-white text-[#130E26] border-none my-6 sm:my-10 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base cursor-pointer transition-transform hover:-translate-y-0.5 w-full"
+                                    @click="openGetStartedModal">
                                     Get Started
                                 </button>
-                                <ul class="list-none text-left mb-8 text-gray-300">
+                                <ul class="list-none text-left mb-8 text-[#E6E6E6]">
                                     <li class="py-2 flex items-center gap-2"> <span><svg width="20" height="20"
                                                 viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="10" cy="10" r="10" fill="#6B4CF5" />
@@ -332,28 +365,35 @@
                     </div>
                 </div>
                 <div
-                    class="border-2 border-[#3A3D52] rounded-xl p-5 sm:p-6 md:p-8 mt-8 sm:mt-12 text-center text-white flex flex-col md:flex-row justify-between items-center gap-6">
+                    class="border-2 border-[#3A3D52] rounded-xl p-8 mt-8 sm:mt-12 text-center text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     <div class="text-left w-full md:w-[40%]">
-                        <p class="mb-2 text-xl sm:text-2xl font-semibold">Not seeing the plan that works best for you?</p>
-                        <p class="text-sm sm:text-base font-light leading-7">No worries—we've got you. Whether you're a growing
-                            team or
-                            have unique
-                            requirements, we're happy to chat and tailor something just for you.</p>
+                        <p class="mb-2 text-xl sm:text-[24px] font-semibold text-[#E6E6E6]">Not seeing the plan that
+                            works best for you?
+                        </p>
+                        <p class="text-sm sm:text-[22px] font-light leading-9 text-[#E6E6E6]">No worries—we've got you.
+                            Whether you're a growing team or have unique requirements, we're happy to chat and tailor
+                            something just for you.</p>
                     </div>
-                    <button class="bg-[#6B4CF5] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base cursor-pointer shrink-0">
+                    <button
+                        class="bg-[#6B4CF5] text-white px-12 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm font-medium sm:text-base cursor-pointer shrink-0">
                         Contact Us
                     </button>
                 </div>
             </div>
         </section>
-
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
+
+defineProps({
+    /** When true, section background is transparent (e.g. on dedicated Pricing page). Default: false for #130E26 (e.g. Homepage). */
+    transparentBg: { type: Boolean, default: false }
+})
 
 const isAnnually = ref(false)
+const openGetStartedModal = inject('openGetStartedModal', () => {})
 </script>
 
 <style scoped>

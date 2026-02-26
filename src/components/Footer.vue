@@ -1,7 +1,7 @@
 <template>
-    <footer class="bg-[#130E26] py-16 pt-16 px-8 text-white">
+    <footer class="bg-[#130E26] py-16 pt-16 md:px-8 px-4 text-white">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-            <div class="flex gap-4">
+            <div class="flex flex-col md:flex-row md:gap-4 gap-2">
                 <div class="text-5xl bg-[#E1DBFD] size-[60px] rounded-xl flex items-center justify-center mb-4">
                     <svg width="29" height="20" viewBox="0 0 29 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="28.6957" height="20" rx="3.47826" fill="#B5A5FA" />
@@ -11,27 +11,27 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="mb-1 font-semibold text-2xl">Subscribe Our Newsletter</h3>
-                    <p class="text-white/80 font-light text-base">We'll Send you a nice letter once per week. No spam
+                    <h3 class="mb-1 font-semibold text-[24px]">Subscribe Our Newsletter</h3>
+                    <p class="text-[#E6E6E6] font-light text-[20px]">We'll Send you a nice letter once per week. No spam
                     </p>
                 </div>
             </div>
-            <div class="gap-4 items-start">
-                <div class="flex gap-4 p-1 rounded-full bg-white items-center border">
+            <div class="md:gap-4 gap-2 items-start">
+                <div class="flex md:gap-4 gap-2 p-1 rounded-full bg-white items-center border">
                     <input type="email" placeholder="Enter your email"
                         class="flex-1 px-4 py-2 text-base text-[#130E26] outline-none" />
                     <button
-                        class="bg-[#6B4CF5] text-white border-none px-8 py-3 rounded-full text-base cursor-pointer transition-transform hover:-translate-y-0.5">
+                        class="bg-[#6B4CF5] text-white font-medium border-none px-12 py-3 rounded-full text-base cursor-pointer transition-transform hover:-translate-y-0.5">
                         Subscribe
                     </button>
                 </div>
             </div>
         </div>
-        <hr class="border border-white/20 my-16 w-[88%] mx-auto">
+        <hr class="border border-white/20 my-16 md:w-[88%] w-full mx-auto">
         <div class="max-w-7xl mx-auto flex justify-between items-center border-white/20">
             <div class="flex gap-8">
-                <a href="#" class="text-white no-underline font-light">Contact</a>
-                <a href="#" class="text-white no-underline font-light">Pricing</a>
+                <a href="#" class="text-white no-underline font-light text-[20px]">Contact</a>
+                <a href="#" class="text-white no-underline font-light text-[20px]">Pricing</a>
             </div>
             <div class="size-[30px] rounded-full bg-[#6B4CF5] flex items-center justify-center cursor-pointer">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

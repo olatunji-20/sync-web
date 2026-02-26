@@ -1,9 +1,11 @@
 <template>
-    <header class="py-3 sm:py-4 md:py-5 bg-white rounded-full w-[95%] sm:w-[90%] md:w-[83%] mx-auto px-2 sm:px-4">
+    <header
+        class="py-3 sm:py-4 md:py-5 bg-white rounded-full w-[95%] sm:w-[90%] md:w-[83%] mx-auto px-2 sm:px-4 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex justify-between items-center text-black">
             <router-link to="/">
                 <div class="">
-                    <svg class="w-20 sm:w-24 md:w-[104px] h-6 sm:h-7 md:h-8" viewBox="0 0 104 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-20 sm:w-24 md:w-[104px] h-6 sm:h-7 md:h-8" viewBox="0 0 104 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_720_4218)">
                             <g clip-path="url(#clip1_720_4218)">
                                 <path
@@ -29,14 +31,79 @@
                 </div>
             </router-link>
             <nav class="hidden md:flex gap-8">
-                <router-link to="/dashboard" class="font-medium">Resources</router-link>
-                <router-link to="/pricing" class="font-medium">Pricing</router-link>
-                <router-link to="/#" class="font-medium">Blog</router-link>
+                <router-link to="/dashboard" class="font-medium text-[18px] text-[#3A3D52]">Resources</router-link>
+                <router-link to="/pricing" class="font-medium text-[18px] text-[#3A3D52]">Pricing</router-link>
+                <router-link to="/#" class="font-medium text-[18px] text-[#3A3D52]">Blog</router-link>
             </nav>
+            <!-- Mobile menu button (visible below md) -->
+            <button type="button"
+                class="md:hidden p-2 rounded-lg text-[#3A3D52] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#6B4CF5] focus:ring-offset-2"
+                aria-label="Toggle menu" @click="mobileMenuOpen = !mobileMenuOpen">
+                <svg v-if="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="#6B4CF5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg v-else class="w-6 h-6" fill="none" stroke="#6B4CF5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <!-- Get Started button (visible from md and up) -->
             <button
-                class="bg-gradient-to-br from-purple-medium to-purple-light text-white border-none px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 rounded-full font-semibold cursor-pointer text-sm sm:text-base shrink-0">
+                type="button"
+                class="hidden md:block bg-[#6B4CF5] text-white border-none px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 rounded-full font-semibold cursor-pointer text-sm sm:text-base shrink-0"
+                @click="openGetStartedModal">
                 Get Started
             </button>
         </div>
+        <!-- Mobile dropdown menu -->
+        <Transition name="dropdown">
+            <div v-show="mobileMenuOpen"
+                class="md:hidden absolute left-0 right-0 top-full mt-2 mx-2 bg-white rounded-2xl shadow-lg border border-gray-100 py-4 px-4 z-50">
+                <nav class="flex flex-col gap-1">
+                    <router-link to="/dashboard"
+                        class="font-medium text-[18px] text-[#3A3D52] py-3 px-4 rounded-xl hover:bg-gray-50"
+                        @click="mobileMenuOpen = false">
+                        Resources
+                    </router-link>
+                    <router-link to="/pricing"
+                        class="font-medium text-[18px] text-[#3A3D52] py-3 px-4 rounded-xl hover:bg-gray-50"
+                        @click="mobileMenuOpen = false">
+                        Pricing
+                    </router-link>
+                    <router-link to="/#"
+                        class="font-medium text-[18px] text-[#3A3D52] py-3 px-4 rounded-xl hover:bg-gray-50"
+                        @click="mobileMenuOpen = false">
+                        Blog
+                    </router-link>
+                </nav>
+                <div class="mt-2 pt-3 border-t border-gray-100 px-4">
+                    <button
+                        type="button"
+                        class="w-full bg-[#6B4CF5] text-white border-none px-4 py-3 rounded-full font-semibold cursor-pointer text-base"
+                        @click="mobileMenuOpen = false; openGetStartedModal()">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </Transition>
     </header>
 </template>
+
+<script setup>
+import { ref, inject } from 'vue'
+
+const mobileMenuOpen = ref(false)
+const openGetStartedModal = inject('openGetStartedModal', () => {})
+</script>
+
+<style scoped>
+.dropdown-enter-active,
+.dropdown-leave-active {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+</style>

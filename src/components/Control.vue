@@ -1,26 +1,30 @@
 <template>
     <!-- Take Control Section -->
-    <section class="py-32 px-8 bg-[#F8F6FF] border-2 border-red-400">
+    <section class="py-32 md:px-8 px-2 bg-[#F8F6FF]">
         <div
-            class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 bg-[#6B4CF5] rounded-3xl px-12 py-20 items-center border-2 border-blue-400">
-            <div class="pr-8 w-[80%] border-2 border-green-400">
-                <h2 class="text-5xl font-medium mb-8 text-white">Take Control of Your Bookmarks</h2>
-                <p class="text-xl text-white mb-8 leading-relaxed">Save, organize, and access your favorite links
+            class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 md:gap-16 gap-8 bg-[#6B4CF5] rounded-3xl md:px-12 px-4 py-20 items-center">
+            <div class="pr-0 md:pr-8 w-full md:w-[90%]">
+                <h2 class="text-2xl sm:text-[36px] font-semibold text-[#E6E6E6] mb-8">Take Control of Your Bookmarks
+                </h2>
+                <p class="text-base sm:text-[22px] text-[#E6E6E6] mb-8 leading-relaxed">Save, organize, and access your
+                    favorite links
                     anytime, anywhere—across all your browsers and devices.</p>
-                <button class="bg-white text-[#6B4CF5] px-8 py-3 mb-24 rounded-full text-base cursor-pointer">
+                <button type="button"
+                    class="bg-white text-[#6B4CF5] px-12 py-3 mb-8 md:mb-24 rounded-full font-medium text-base cursor-pointer"
+                    @click="openGetStartedModal">
                     Get Started
                 </button>
             </div>
-            <div class="flex justify-center items-center border-2 h-full border-yellow-400">
-                <div class="relative w-full h-full bg-[url('@/assets/dew.svg')] bg-contain bg-center bg-no-repeat">
-                    <div class="absolute top-28 left-8 w-[350px] h-[286px] rounded-2xl rotate-[10deg]">
-                        <img src="@/assets/cont-2.svg" alt="Control" class="w-full h-full rotate-[-10deg] object-cover">
-                    </div>
-                    <div class="absolute top-5 right-0 w-[315px] h-[280px] bg-[#FFF] rounded-2xl -rotate-[10deg]">
-                        <img src="@/assets/insta.svg" alt="Control" class="w-full h-full object-cover">
-                    </div>
+            <div class="flex justify-center items-center md:h-full h-[300px]">
+                <div class="relative w-full h-full">
+                    <img src="@/assets/control.png" alt="Control" class="w-full h-full object-contain">
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+<script setup>
+import { inject } from 'vue'
+const openGetStartedModal = inject('openGetStartedModal', () => { })
+</script>

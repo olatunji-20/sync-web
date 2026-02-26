@@ -1,30 +1,31 @@
 <template>
     <div>
         <!-- FAQ Section -->
-        <section class="bg-white py-16 px-8">
+        <section class="bg-white py-16 md:px-8 px-4">
             <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <!-- Left Column - Information -->
-                <div>
-                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Frequently asked questions</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed">
+                <div class="text-center md:text-left">
+                    <h2 class="text-2xl sm:text-[36px] font-semibold text-[#3A3D52] mb-4">Frequently asked questions
+                    </h2>
+                    <p class="text-base sm:text-[22px] text-[#505265] leading-relaxed">
                         Find answers to common questions about saving, organizing, and sharing your bookmarks, plus tips
                         on getting the most out of our features.
                     </p>
                 </div>
 
                 <!-- Right Column - Accordion -->
-                <div class="space-y-0">
+                <div class="space-y-0 px-4">
                     <div v-for="(faq, index) in faqs" :key="index" class="border-b border-gray-200">
                         <button @click="toggleFaq(index)"
                             class="w-full flex justify-between items-center py-6 text-left hover:text-purple-medium transition">
-                            <h4 class="font-semibold text-gray-900 pr-4">{{ faq.question }}</h4>
-                            <svg :class="['w-5 h-5 text-purple-medium transition-transform flex-shrink-0', expandedFaqs.includes(index) ? 'rotate-180' : '']"
+                            <h4 class="font-semibold text-[#3A3D52] pr-4">{{ faq.question }}</h4>
+                            <svg :class="['w-5 h-5 text-purple-medium transition-transform shrink-0', expandedFaqs.includes(index) ? 'rotate-180' : '']"
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
-                        <div v-show="expandedFaqs.includes(index)" class="pb-6 text-gray-600 leading-relaxed">
+                        <div v-show="expandedFaqs.includes(index)" class="pb-6 text-[#505265] leading-relaxed">
                             {{ faq.answer }}
                         </div>
                     </div>

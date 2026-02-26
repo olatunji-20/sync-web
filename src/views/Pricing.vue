@@ -1,11 +1,13 @@
 <template>
     <div class="font-sans text-gray-800 min-h-screen overflow-x-hidden">
         <!-- Header Navigation -->
-        <div class="pt-12 sm:pt-14 md:pt-16 px-4 sm:px-6 md:px-8 bg-[#130E26]">
-            <Navbar />
-        </div>
+        <div class="bg-[#130E26] bg-[url('@/assets/starss.png')] bg-cover bg-center bg-no-repeat">
+            <div class="pt-12 sm:pt-14 md:pt-16 px-4 sm:px-6 md:px-8">
+                <Navbar />
+            </div>
 
-        <Pricing />
+            <Pricing :transparent-bg="true" />
+        </div>
 
         <FAQ />
 

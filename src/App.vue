@@ -1,9 +1,20 @@
 <script setup>
+import { ref, provide } from 'vue'
 import { RouterView } from 'vue-router'
+import GetStartedModal from './components/GetStartedModal.vue'
+
+const getStartedModalOpen = ref(false)
+
+function openGetStartedModal() {
+  getStartedModalOpen.value = true
+}
+
+provide('openGetStartedModal', openGetStartedModal)
 </script>
 
 <template>
   <RouterView />
+  <GetStartedModal v-model="getStartedModalOpen" />
 </template>
 
 <style scoped>

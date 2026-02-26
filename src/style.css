@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --color-purple-dark: #4B0082;
   --color-purple-medium: #6B46C1;
   --color-purple-light: #9333EA;
+}
+
+body {
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
