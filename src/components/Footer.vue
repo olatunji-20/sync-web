@@ -30,8 +30,8 @@
         <hr class="border border-white/20 my-16 md:w-[88%] w-full mx-auto">
         <div class="max-w-7xl mx-auto flex justify-between items-center border-white/20">
             <div class="flex gap-8">
-                <a href="#" class="text-white no-underline font-light text-[20px]">Contact</a>
-                <a href="#" class="text-white no-underline font-light text-[20px]">Pricing</a>
+                <router-link to="/" class="text-white no-underline font-light text-[20px]">Home</router-link>
+                <router-link to="/pricing" class="text-white no-underline font-light text-[20px]">Pricing</router-link>
             </div>
             <div class="size-[30px] rounded-full bg-[#6B4CF5] flex items-center justify-center cursor-pointer">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -26,7 +26,7 @@
                     </span>
                 </div>
                 <div class="max-w-2xl mx-auto relative z-10 mt-4 mb-12 sm:mb-16 md:mb-24 px-0">
-                    <h1
+                    <h1 data-aos="fade-up"
                         class="text-3xl sm:text-4xl md:text-5xl lg:text-[72px] text-white mb-4 sm:mb-6 font-medium leading-[1.3]">
                         Sync Bookmarks Across All
                         Browsers</h1>
@@ -79,7 +79,8 @@
             <!-- Product Showcase -->
             <section class="pt-6 px-4 sm:px-6 md:px-12">
                 <div class="max-w-7xl mx-auto">
-                    <img src="../assets/tab.webp" alt="Product Showcase" class="w-full h-auto object-cover" />
+                    <img data-aos="fade-up" src="../assets/tab.webp" alt="Product Showcase"
+                        class="w-full h-auto object-cover" />
                 </div>
             </section>
         </div>
@@ -148,10 +149,10 @@
                 <h2 class="text-2xl sm:text-3xl font-semibold mb-3 sm:mb-4 text-[#3A3D52]">Invite Others, Organize
                     Together</h2>
                 <div class="w-full max-w-[700px] relative my-12 sm:my-16 md:my-24 mx-auto">
-                    <img src="../assets/invite.webp" alt="Invite Others, Organize Together"
+                    <img data-aos="fade-up" src="../assets/invite.webp" alt="Invite Others, Organize Together"
                         class="w-full h-full object-contain">
                     <div class="w-[65%] h-[75%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg">
-                        <img src="../assets/sub-invite.webp" alt="Invite Others, Organize Together"
+                        <img data-aos="fade-down" src="../assets/sub-invite.webp" alt="Invite Others, Organize Together"
                             class="w-full h-full object-contain">
                     </div>
                 </div>
@@ -191,6 +192,12 @@ import Pricing from '../components/Pricing.vue'
 import FAQ from '../components/FAQ.vue'
 import Control from '../components/Control.vue'
 import Footer from '../components/Footer.vue'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init({
+    duration: 1000,
+});
 </script>
 
 <style scoped>

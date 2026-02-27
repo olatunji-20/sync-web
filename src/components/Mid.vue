@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="overflow-hidden">
 
         <!-- Personalized Collection -->
         <section class="bg-white py-32 md:px-8 px-4">
@@ -20,7 +20,8 @@
                         resources are always at your fingertips whenever you need them</p>
                 </div>
                 <div class="flex justify-center items-center md:h-[480px] h-[300px] bg-[#F8F6FF] relative rounded-xl">
-                    <img src="@/assets/bookmark.webp" alt="sharing Image" class="w-full h-full object-contain">
+                    <img data-aos="slide-up" src="@/assets/bookmark.webp" alt="sharing Image"
+                        class="w-full h-full object-contain">
                 </div>
             </div>
         </section>
@@ -29,7 +30,8 @@
         <section class="bg-white py-32 md:px-8 px-4">
             <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 md:order-1 h-[300px] md:h-[480px] bg-[#F8F6FF] rounded-xl">
-                    <img src="@/assets/folders.webp" alt="folders Image" class="w-full h-full object-contain">
+                    <img data-aos="slide-up" src="@/assets/folders.webp" alt="folders Image"
+                        class="w-full h-full object-contain">
                 </div>
                 <div class="order-1 md:order-2">
                     <div class="text-[#6B4CF5] font-semibold mb-6 uppercase text-sm">FOLDERS</div>
@@ -65,7 +67,8 @@
                         and easy access to important links.</p>
                 </div>
                 <div class="flex justify-center items-center relative md:h-[480px] h-[300px] bg-[#F8F6FF] rounded-xl">
-                    <img src="@/assets/sharing.webp" alt="bookmarking Image" class="w-full h-full object-contain">
+                    <img data-aos="slide-up" src="@/assets/sharing.webp" alt="bookmarking Image"
+                        class="w-full h-full object-contain">
                 </div>
             </div>
         </section>
@@ -83,15 +86,18 @@
                     class="my-16 mx-auto flex flex-col md:flex-row justify-center items-center md:items-end pt-12 md:gap-0 gap-8">
                     <div
                         class="border rounded-[50px] flex items-center justify-center border-[#65558F12] bg-white w-[95%] md:w-[450px] md:h-[370px] h-[320px] shrink-0 z-10">
-                        <img src="@/assets/how-1.webp" alt="install Image" class="w-full h-full object-cover">
+                        <img data-aos="slide-up" src="@/assets/how-1.webp" alt="install Image"
+                            class="w-full h-full object-cover">
                     </div>
                     <div
                         class="border rounded-[50px] flex items-center justify-center border-[#65558F12] bg-white w-[95%] md:w-[450px] md:h-[370px] h-[320px] shrink-0 relative  bottom-0 md:bottom-16 mx-0 md:-mx-10">
-                        <img src="@/assets/how-2.webp" alt="install Image" class="w-full h-full object-cover">
+                        <img data-aos="slide-down" src="@/assets/how-2.webp" alt="install Image"
+                            class="w-full h-full object-cover">
                     </div>
                     <div
                         class="border rounded-[50px] flex items-center justify-center border-[#65558F12] bg-white w-[95%] md:w-[450px] md:h-[370px] h-[320px] shrink-0  z-10">
-                        <img src="@/assets/how-3.webp" alt="install Image" class="w-full h-full object-cover">
+                        <img data-aos="slide-up" src="@/assets/how-3.webp" alt="install Image"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 mt-12 text-left">
@@ -122,5 +128,12 @@
 
 <script setup>
 import { inject } from 'vue'
-const openGetStartedModal = inject('openGetStartedModal', () => { })
+const openGetStartedModal = inject('openGetStartedModal', () => { });
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init({
+    duration: 700,
+});
 </script>

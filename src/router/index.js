@@ -34,6 +34,16 @@ const router = createRouter({
       component: ViewMembers,
     },
   ],
+  scrollBehavior(stand, homepage, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+    return {
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    }
+  }
 })
 
 export default router
