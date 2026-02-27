@@ -21,7 +21,7 @@
                     <input type="email" placeholder="Enter your email"
                         class="flex-1 px-4 py-2 text-base text-[#130E26] outline-none" />
                     <button
-                        class="bg-[#6B4CF5] text-white font-medium border-none px-12 py-3 rounded-full text-base cursor-pointer transition-transform hover:-translate-y-0.5">
+                        class="bg-[#6B4CF5] text-white font-medium border-none px-4 md:px-12 py-2 md:py-3 rounded-full text-base cursor-pointer transition-transform hover:-translate-y-0.5">
                         Subscribe
                     </button>
                 </div>
