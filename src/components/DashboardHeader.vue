@@ -1,9 +1,21 @@
 <template>
   <header class="border-b border-stone-200 bg-white py-4">
     <div class="">
-      <div class="flex items-center justify-between px-6">
-        <h1 class="text-2xl font-semibold text-stone-900">{{ title }}</h1>
-        <div class="flex items-center gap-2">
+      <div class="flex items-center justify-between gap-3 px-4 sm:px-6">
+        <div class="flex items-center gap-3 min-w-0 flex-1">
+          <button
+            type="button"
+            class="lg:hidden p-2 rounded-lg text-stone-600 hover:bg-stone-100 shrink-0"
+            aria-label="Open menu"
+            @click="toggleSidebar"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <h1 class="text-xl sm:text-2xl font-semibold text-stone-900 truncate">{{ title }}</h1>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
           <div class="relative" ref="notificationPanelRef">
             <button type="button"
               class="relative p-2 border border-stone-200 bg-stone-100 rounded-full hover:bg-stone-200 cursor-pointer text-stone-600"
@@ -23,46 +35,60 @@
                 class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
             </button>
 
-            <!-- Notifications dropdown -->
-            <div v-show="notificationsOpen"
-              class="absolute top-full right-0 mt-2 w-[380px] max-h-[420px] flex flex-col bg-white rounded-xl border border-stone-200 shadow-lg z-30">
-              <div class="flex items-center justify-between px-4 py-3 border-b border-stone-200 shrink-0">
-                <h3 class="text-base font-medium text-stone-900">Notifications</h3>
-                <button type="button" class="text-sm font-medium text-[#6B4CF5] hover:underline" @click="markAllRead">
-                  Mark all read
-                </button>
-              </div>
-              <div class="overflow-y-auto flex-1 min-h-0">
-                <div v-for="(n, idx) in notifications" :key="n.id"
-                  class="px-4 py-3 border-b border-stone-100 last:border-b-0">
-                  <div class="flex gap-3">
-                    <div
-                      class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center text-white text-sm font-semibold"
-                      :class="n.avatarBg">
-                      {{ n.avatarInitial }}
-                    </div>
-                    <div class="min-w-0 flex-1">
-                      <p class="font-semibold text-stone-900">{{ n.title }}</p>
-                      <p class="text-sm text-stone-500 mt-0.5">{{ n.description }}</p>
-                      <p class="text-xs text-stone-400 mt-1">{{ n.timeAgo }}</p>
-                      <div v-if="n.actions" class="flex gap-2 mt-3 justify-between">
-                        <button type="button"
-                          class="w-1/2 px-3 py-1.5 rounded-full text-sm cursor-pointer bg-stone-100 text-stone-700 hover:bg-stone-200"
-                          @click="onNotificationAction(n.id, 'decline')">
-                          Decline
-                        </button>
-                        <button type="button"
-                          class="w-1/2 px-3 py-1.5 rounded-full text-sm cursor-pointer bg-[#24273F] text-white hover:bg-[#24273F]/90"
-                          @click="onNotificationAction(n.id, 'accept')">
-                          Accept
-                        </button>
+          </div>
+
+          <Teleport to="body">
+            <template v-if="notificationsOpen">
+              <div
+                class="fixed inset-0 z-40 bg-stone-900/30 sm:bg-transparent sm:pointer-events-none"
+                aria-hidden="true"
+                @click="notificationsOpen = false"
+              />
+              <div
+                ref="notificationDropdownRef"
+                class="fixed z-50 flex flex-col bg-white rounded-xl border border-stone-200 shadow-lg left-4 right-4 top-16 max-h-[calc(100dvh-5.5rem)] sm:left-auto sm:right-6 sm:top-[4.25rem] sm:w-[380px] sm:max-h-[min(420px,calc(100dvh-5.5rem))]"
+                role="dialog"
+                aria-label="Notifications"
+                @click.stop
+              >
+                <div class="flex items-center justify-between px-4 py-3 border-b border-stone-200 shrink-0">
+                  <h3 class="text-base font-medium text-stone-900">Notifications</h3>
+                  <button type="button" class="text-sm font-medium text-[#6B4CF5] hover:underline" @click="markAllRead">
+                    Mark all read
+                  </button>
+                </div>
+                <div class="overflow-y-auto flex-1 min-h-0">
+                  <div v-for="n in notifications" :key="n.id"
+                    class="px-4 py-3 border-b border-stone-100 last:border-b-0">
+                    <div class="flex gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full shrink-0 flex items-center justify-center text-white text-sm font-semibold"
+                        :class="n.avatarBg">
+                        {{ n.avatarInitial }}
+                      </div>
+                      <div class="min-w-0 flex-1">
+                        <p class="font-semibold text-stone-900">{{ n.title }}</p>
+                        <p class="text-sm text-stone-500 mt-0.5">{{ n.description }}</p>
+                        <p class="text-xs text-stone-400 mt-1">{{ n.timeAgo }}</p>
+                        <div v-if="n.actions" class="flex gap-2 mt-3 justify-between">
+                          <button type="button"
+                            class="w-1/2 px-3 py-1.5 rounded-full text-sm cursor-pointer bg-stone-100 text-stone-700 hover:bg-stone-200"
+                            @click="onNotificationAction(n.id, 'decline')">
+                            Decline
+                          </button>
+                          <button type="button"
+                            class="w-1/2 px-3 py-1.5 rounded-full text-sm cursor-pointer bg-[#24273F] text-white hover:bg-[#24273F]/90"
+                            @click="onNotificationAction(n.id, 'accept')">
+                            Accept
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </template>
+          </Teleport>
           <router-link to="/settings"
             class="p-2 border border-stone-200 bg-stone-100 rounded-full hover:bg-stone-200 cursor-pointer text-stone-600 inline-flex"
             title="Settings">
@@ -77,9 +103,9 @@
           </router-link>
         </div>
       </div>
-      <hr class="border-stone-200 my-6">
-      <div class="flex items-center justify-between px-6">
-        <div class="flex-1 max-w-[300px]">
+      <hr class="border-stone-200 my-4 sm:my-6">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between px-4 sm:px-6">
+        <div class="w-full sm:flex-1 sm:max-w-[300px]">
           <div class="relative">
             <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" viewBox="0 0 16 16"
               xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +122,7 @@
               @input="$emit('search', $event.target.value)" />
           </div>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
           <div class="bg-stone-200 rounded-full py-1 px-2">
             <div class="flex items-center -space-x-2">
               <div v-for="(_, i) in 3" :key="i" class="w-8 h-8 rounded-full border-2 border-white shrink-0"
@@ -104,7 +130,7 @@
             </div>
           </div>
           <button
-            class="flex items-center gap-2 px-4 py-2 rounded-full bg-[#6B4CF5] cursor-pointer text-white hover:bg-[#6B4CF5]/80"
+            class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#6B4CF5] cursor-pointer text-white hover:bg-[#6B4CF5]/80 w-full sm:w-auto"
             @click="$emit('share')">
             Share
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,8 +192,10 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, inject, onMounted, onUnmounted } from 'vue'
 import BrowserFilters from './BrowserFilters.vue'
+
+const toggleSidebar = inject('toggleSidebar', () => {})
 
 const searchQuery = ref('')
 const sortOpen = ref(false)
@@ -176,6 +204,7 @@ const notificationsOpen = ref(false)
 const sortDropdownRef = ref(null)
 const viewDropdownRef = ref(null)
 const notificationPanelRef = ref(null)
+const notificationDropdownRef = ref(null)
 const sortOptions = ['Newest', 'Oldest', 'A-Z', 'Z-A']
 const viewModes = ['List', 'Grid']
 
@@ -263,7 +292,9 @@ function onNotificationAction(notificationId, action) {
 function handleClickOutside(e) {
   if (!sortDropdownRef.value?.contains(e.target)) sortOpen.value = false
   if (!viewDropdownRef.value?.contains(e.target)) viewOpen.value = false
-  if (!notificationPanelRef.value?.contains(e.target)) notificationsOpen.value = false
+  const inNotificationTrigger = notificationPanelRef.value?.contains(e.target)
+  const inNotificationDropdown = notificationDropdownRef.value?.contains(e.target)
+  if (!inNotificationTrigger && !inNotificationDropdown) notificationsOpen.value = false
 }
 
 onMounted(() => document.addEventListener('click', handleClickOutside))

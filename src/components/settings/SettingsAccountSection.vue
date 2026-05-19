@@ -1,36 +1,36 @@
 <template>
   <div>
-    <div class="flex items-center justify-between gap-4 mb-6">
-      <div>
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between mb-6">
+      <div class="min-w-0">
         <h2 class="text-lg font-medium text-stone-900">Account information</h2>
         <p class="text-sm text-stone-500 mt-0.5">
           Manage your personal details, login credentials, and security settings
         </p>
       </div>
-      <div class="flex items-center gap-2 shrink-0">
+      <div class="flex items-center gap-2 w-full sm:w-auto shrink-0">
         <button type="button"
-          class="px-6 py-2 rounded-full cursor-pointer border border-stone-200 bg-stone-100 text-stone-700 font-normal hover:bg-stone-200"
+          class="flex-1 sm:flex-none px-6 py-2 rounded-full cursor-pointer border border-stone-200 bg-stone-100 text-stone-700 font-normal hover:bg-stone-200"
           @click="$emit('cancel')">
           Cancel
         </button>
         <button type="button"
-          class="px-6 py-2 rounded-full cursor-pointer bg-[#6B4CF5] text-white font-normal hover:bg-[#6B4CF5]/90"
+          class="flex-1 sm:flex-none px-6 py-2 rounded-full cursor-pointer bg-[#6B4CF5] text-white font-normal hover:bg-[#6B4CF5]/90"
           @click="onSave">
           Save
         </button>
       </div>
     </div>
 
-    <hr class="mt-8 mb-12 text-stone-200" />
-    <!-- Profile picture -->
-    <div class="my-12 flex items-start justify-between">
-      <div class="">
+    <hr class="mt-6 sm:mt-8 mb-8 sm:mb-12 border-stone-200" />
+
+    <div class="my-8 sm:my-12 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+      <div class="min-w-0">
         <h3 class="text-md font-medium text-stone-900">Profile picture</h3>
         <p class="text-sm text-stone-500 mt-0.5">Upload your picture</p>
       </div>
-      <div class="relative inline-block">
+      <div class="relative inline-block self-center sm:self-auto shrink-0">
         <div
-          class="w-36 h-36 rounded-full bg-stone-200 border-2 border-stone-300 flex items-center justify-center overflow-hidden">
+          class="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-stone-200 border-2 border-stone-300 flex items-center justify-center overflow-hidden">
           <span v-if="!profileImage" class="text-4xl">🖌️</span>
           <img v-else :src="profileImage" alt="Profile" class="w-full h-full object-cover" />
         </div>
@@ -55,54 +55,53 @@
       </div>
     </div>
 
-    <hr class="mt-8 mb-12 text-stone-200" />
+    <hr class="my-8 sm:my-12 border-stone-200" />
 
-    <!-- Form fields -->
-    <div class="space-y-6">
-      <div class="flex items-center justify-between">
-        <div class="">
+    <div class="space-y-8 sm:space-y-6">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div class="min-w-0 shrink-0">
           <h3 class="text-md font-medium text-stone-900">Full name</h3>
           <p class="text-sm text-stone-500 mt-0.5">Tell us your name</p>
         </div>
-        <div class="flex gap-3 w-4/6">
-          <div class="flex-1 flex flex-col gap-1">
+        <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-4/6 min-w-0">
+          <div class="flex-1 flex flex-col gap-1 min-w-0">
             <label for="account-first-name" class="text-sm font-medium text-stone-700">Enter first name</label>
             <input id="account-first-name" v-model="localForm.firstName" type="text" placeholder="Enter first name"
-              class="px-4 py-2 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4CF5]/30 focus:border-[#6B4CF5]" />
+              class="w-full px-4 py-2 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4CF5]/30 focus:border-[#6B4CF5]" />
           </div>
-          <div class="flex-1 flex flex-col gap-1">
+          <div class="flex-1 flex flex-col gap-1 min-w-0">
             <label for="account-last-name" class="text-sm font-medium text-stone-700">Enter last name</label>
             <input id="account-last-name" v-model="localForm.lastName" type="text" placeholder="Enter last name"
-              class="px-4 py-2 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4CF5]/30 focus:border-[#6B4CF5]" />
+              class="w-full px-4 py-2 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4CF5]/30 focus:border-[#6B4CF5]" />
           </div>
         </div>
       </div>
 
-      <hr class="my-12 text-stone-200" />
+      <hr class="my-8 sm:my-12 border-stone-200" />
 
-      <div class="flex items-center justify-between">
-        <div class="">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div class="min-w-0 shrink-0">
           <h3 class="text-md font-medium text-stone-900">Email address</h3>
           <p class="text-sm text-stone-500 mt-0.5">Tell us your email address</p>
         </div>
-        <div class="w-4/6 flex flex-col gap-1">
+        <div class="w-full lg:w-4/6 flex flex-col gap-1 min-w-0">
           <label for="account-email" class="text-sm font-medium text-stone-700">Enter email address</label>
           <input id="account-email" v-model="localForm.email" type="email" placeholder="Enter email address"
-            class="px-4 py-2.5 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4CF5]/30 focus:border-[#6B4CF5]" />
+            class="w-full px-4 py-2.5 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4CF5]/30 focus:border-[#6B4CF5]" />
         </div>
       </div>
 
-      <hr class="my-12 text-stone-200" />
+      <hr class="my-8 sm:my-12 border-stone-200" />
 
-      <div class="flex items-center justify-between mb-40">
-        <div>
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between mb-16 sm:mb-40">
+        <div class="min-w-0 shrink-0">
           <h3 class="text-md font-medium text-stone-900">Location</h3>
           <p class="text-sm text-stone-500 mt-0.5">Tell us your location</p>
         </div>
-        <div class="w-4/6 flex flex-col gap-1">
+        <div class="w-full lg:w-4/6 flex flex-col gap-1 min-w-0">
           <label for="account-location" class="text-sm font-medium text-stone-700">Enter location</label>
           <input id="account-location" v-model="localForm.location" type="text" placeholder="Enter location"
-            class="px-4 py-2.5 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4CF5]/30 focus:border-[#6B4CF5]" />
+            class="w-full px-4 py-2.5 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#6B4CF5]/30 focus:border-[#6B4CF5]" />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <template>
-  <section class="px-6 pb-8">
-    <div class="flex items-center justify-between mb-4">
+  <section class="px-4 sm:px-6 pb-8">
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-4">
       <h2 class="text-lg font-semibold text-stone-900">All Bookmarks</h2>
       <a href="#" class="text-[#6B4CF5] hover:underline flex items-center gap-1.5 text-sm font-medium"
         @click.prevent="$emit('add-bookmark')">
@@ -12,20 +12,20 @@
     </div>
     <ul class="space-y-1">
       <li v-for="(item, i) in bookmarks" :key="i"
-        class="flex items-center gap-4 p-3 rounded-xl hover:bg-stone-50 group">
+        class="flex items-center gap-2 sm:gap-4 p-3 rounded-xl hover:bg-stone-50 group">
         <input type="checkbox" class="rounded border-stone-300 text-purple-600 focus:ring-purple-500" />
         <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-lg"
           :class="item.iconBg ?? 'bg-blue-100'">
           {{ item.icon }}
         </div>
         <div class="min-w-0 flex-1">
-          <p class="font-medium text-stone-900">{{ item.title }}</p>
-          <p class="text-sm text-stone-500">{{ item.url }} | {{ item.folder }} | {{ item.time }}</p>
+          <p class="font-medium text-stone-900 truncate">{{ item.title }}</p>
+          <p class="text-xs sm:text-sm text-stone-500 truncate">{{ item.url }} | {{ item.folder }} | {{ item.time }}</p>
           <p v-if="item.tags" class="text-xs text-[#795DF6] mt-0.5">{{ item.tags }}</p>
         </div>
-        <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+        <div class="flex items-center gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity shrink-0"
           aria-label="More options">
-          <div class="flex items-center justify-center size-5 cursor-pointer">
+          <div class="hidden sm:flex items-center justify-center size-5 cursor-pointer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M15.5799 11.9999C15.5799 13.9799 13.9799 15.5799 11.9999 15.5799C10.0199 15.5799 8.41992 13.9799 8.41992 11.9999C8.41992 10.0199 10.0199 8.41992 11.9999 8.41992C13.9799 8.41992 15.5799 10.0199 15.5799 11.9999Z"
@@ -36,7 +36,7 @@
             </svg>
           </div>
 
-          <div class="flex items-center justify-center size-5 cursor-pointer">
+          <div class="hidden sm:flex items-center justify-center size-5 cursor-pointer">
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M0.75 18.75L5.75 13.75M11.009 16.621C7.265 15.771 3.729 12.235 2.879 8.49105C2.744 7.89905 2.677 7.60305 2.872 7.12205C3.066 6.64205 3.305 6.49205 3.781 6.19505C4.857 5.52305 6.023 5.30905 7.232 5.41505C8.929 5.56605 9.778 5.64105 10.202 5.42005C10.625 5.20005 10.912 4.68405 11.488 3.65305L12.216 2.34605C12.696 1.48605 12.936 1.05505 13.501 0.852049C14.066 0.649049 14.406 0.772049 15.086 1.01805C15.8675 1.29866 16.5772 1.74865 17.1643 2.33577C17.7514 2.92288 18.2014 3.6326 18.482 4.41405C18.728 5.09405 18.851 5.43405 18.648 5.99905C18.445 6.56305 18.015 6.80305 17.154 7.28405L15.817 8.02905C14.787 8.60305 14.273 8.89105 14.052 9.31805C13.832 9.74605 13.912 10.576 14.072 12.236C14.19 13.456 13.987 14.63 13.306 15.72C13.008 16.196 12.859 16.434 12.378 16.629C11.898 16.823 11.602 16.756 11.009 16.621Z"

@@ -1,9 +1,9 @@
 <template>
-  <section class="px-6 py-6">
+  <section class="px-4 sm:px-6 py-6">
     <h2 class="text-lg font-semibold text-stone-900 mb-4">Pinned Bookmarks</h2>
-    <div class="flex gap-4 overflow-x-auto pb-2 -mx-6 px-6 scrollbar-thin">
+    <div class="flex gap-4 overflow-x-auto pb-2 -mx-4 sm:-mx-6 px-4 sm:px-6 scrollbar-thin">
       <div v-for="(card, i) in bookmarks" :key="i"
-        class="shrink-0 w-64 rounded-2xl overflow-hidden shadow-sm border border-stone-200 relative group">
+        class="shrink-0 w-[min(100%,16rem)] sm:w-64 rounded-2xl overflow-hidden shadow-sm border border-stone-200 relative group">
         <div :class="card.bg" class="h-28 flex items-center justify-center">
           <span class="text-4xl">{{ card.icon }}</span>
         </div>
@@ -17,7 +17,7 @@
             <div class="flex items-center gap-1">
               <!-- <div class="w-6 h-6 rounded-full bg-amber-200 shrink-0"></div> -->
               <button
-                class="p-1 rounded hover:bg-stone-100 text-stone-500 transition-opacity cursor-pointer opacity-0 group-hover:opacity-100"
+                class="p-1 rounded hover:bg-stone-100 text-stone-500 transition-opacity cursor-pointer opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
                 aria-label="More options" @click.stop="openContextMenu($event, card)">
                 <svg width="13" height="24" viewBox="0 0 13 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="11.5" cy="12" r="1.5" transform="rotate(-180 11.5 12)" fill="#92939F" />

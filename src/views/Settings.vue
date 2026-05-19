@@ -1,10 +1,13 @@
 <template>
   <LayoutWithSidebar :user="user" :counts="counts" @create-folder="onCreateFolder" @upgrade="onUpgrade">
-    <div class="py-8">
-      <h1 class="text-2xl font-bold text-stone-900 px-6">Settings</h1>
-      <hr class="my-6 text-stone-200" />
+    <div class="py-6 sm:py-8">
+      <div class="flex items-center gap-3 px-4 sm:px-6">
+        <SidebarMenuButton />
+        <h1 class="text-xl sm:text-2xl font-bold text-stone-900">Settings</h1>
+      </div>
+      <hr class="my-4 sm:my-6 mx-4 sm:mx-6 border-stone-200" />
 
-      <div class="flex gap-8 mt-8 px-6">
+      <div class="flex flex-col gap-6 lg:flex-row lg:gap-8 mt-6 lg:mt-8 px-4 sm:px-6">
         <SettingsNav v-model="activeSection" :items="settingsNav" />
 
         <div class="flex-1 min-w-0">
@@ -40,6 +43,7 @@
 <script setup>
 import { ref } from 'vue'
 import LayoutWithSidebar from '../components/LayoutWithSidebar.vue'
+import SidebarMenuButton from '../components/SidebarMenuButton.vue'
 import SettingsNav from '../components/settings/SettingsNav.vue'
 import SettingsAccountSection from '../components/settings/SettingsAccountSection.vue'
 import SettingsSyncSection from '../components/settings/SettingsSyncSection.vue'

@@ -1,9 +1,9 @@
 <template>
-  <aside class="w-64 h-screen shrink-0 flex flex-col border-r border-stone-300 bg-[#F9F9FA] overflow-y-auto">
+  <aside class="w-64 h-full max-h-screen shrink-0 flex flex-col border-r border-stone-300 bg-[#F9F9FA] overflow-y-auto">
     <!-- Logo -->
     <div class="px-5 py-8">
-      <div class="flex items-center gap-2">
-        <router-link to="/">
+      <div class="flex items-center justify-between gap-2">
+        <router-link to="/" @click="closeSidebarOnNav">
           <svg width="76" height="22" viewBox="0 0 76 22" fill="none" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <mask id="mask0_461_255" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="22"
@@ -30,12 +30,21 @@
             </defs>
           </svg>
         </router-link>
-
+        <button
+          type="button"
+          class="lg:hidden p-2 rounded-lg text-stone-600 hover:bg-stone-200 shrink-0"
+          aria-label="Close menu"
+          @click="closeSidebarOnNav"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
     </div>
 
     <!-- User profile -->
-    <router-link to="/settings">
+    <router-link to="/settings" @click="closeSidebarOnNav">
       <div class="px-4 pb-4">
         <div class="flex items-center gap-3 p-3 rounded-xl bg-[#E9E9EC] cursor-pointer hover:bg-white/80">
           <div class="w-10 h-10 rounded-full bg-amber-200 flex items-center justify-center text-lg">👤</div>
@@ -54,7 +63,8 @@
     <nav class="flex-1 px-3 space-y-1">
       <p class="px-3 py-1.5 text-xs font-medium text-stone-500 uppercase tracking-wider">General</p>
       <router-link to="/dashboard"
-        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-800 hover:bg-white/60">
+        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-800 hover:bg-white/60"
+        @click="closeSidebarOnNav">
         <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
@@ -62,7 +72,8 @@
         <span>All bookmarks</span>
         <span class="ml-auto text-sm text-stone-500">{{ counts.allBookmarks }}</span>
       </router-link>
-      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-800 hover:bg-white/60">
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-800 hover:bg-white/60"
+        @click="closeSidebarOnNav">
         <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
@@ -71,7 +82,8 @@
         <span class="ml-auto text-sm text-stone-500">{{ counts.unsorted }}</span>
       </a>
       <p class="px-3 py-1.5 text-xs font-medium text-stone-500 uppercase tracking-wider mt-4">Collections</p>
-      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-800 hover:bg-white/60">
+      <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-800 hover:bg-white/60"
+        @click="closeSidebarOnNav">
         <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
@@ -94,7 +106,14 @@
 </template>
 
 <script setup>
+import { inject } from 'vue'
 import ProPromoCard from './ProPromoCard.vue'
+
+const closeSidebar = inject('closeSidebar', () => {})
+
+function closeSidebarOnNav() {
+  closeSidebar()
+}
 
 defineProps({
   user: {
